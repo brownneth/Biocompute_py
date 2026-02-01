@@ -68,7 +68,7 @@ def login():
         return jsonify({"success": False, "message": "password must be a string"}), 400
 
     user = query_one(
-        "SELECT id, password_hash FROM users WHERE email = %s",
+        "SELECT id, firstname, lastname, password_hash FROM users WHERE email = %s",
         (email,)
     )
 
@@ -80,4 +80,12 @@ def login():
         return jsonify({"success": False, "message": "Invalid credentials"}), 401
 
     token = create_access_token(identity=str(user["id"]))
-    return jsonify({"access_token": token, "token_type": "bearer"}), 200
+    
+    return jsonify({
+        "access_token": token, 
+        "token_type": "bearer",
+        "user": {
+            "firstname": user["firstname"],
+            "lastname": user["lastname"]
+        }
+    }), 200
