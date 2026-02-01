@@ -14,7 +14,7 @@ def create_app():
 
     CORS(
         app,
-        origins=["http://localhost:3000", "https://helixpace.vercel.app/"],
+        origins=["http://localhost:3000", "https://helixpace.vercel.app"],
         methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["Content-Type", "Authorization"],
     )
