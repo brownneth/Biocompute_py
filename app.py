@@ -15,7 +15,7 @@ def create_app():
     JWTManager(app)
     CORS(
         app,
-        origins=["https://helixlabs-app.vercel.app", "https://helixpace.vercel.app"],
+        origins=["https://helixlabs-app.vercel.app", "http://localhost:3000"],
         methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["Content-Type", "Authorization"],
     )
